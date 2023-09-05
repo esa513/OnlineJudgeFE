@@ -377,7 +377,7 @@
             this.testCaseUploaded = true
           })
         } else {
-          this.title = this.$i18n.t('m.Add_Problem')
+          this.title = this.$i18n.t('m.Create_Problem')
           for (let item of allLanguage.languages) {
             this.problem.languages.push(item.name)
           }

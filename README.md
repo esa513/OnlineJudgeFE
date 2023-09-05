@@ -35,7 +35,7 @@ export TARGET=http://Your-backend
 # serve with hot reload at localhost:8080
 npm run dev
 ```
-### Windows
+### Windows-CMD
 
 ```bash
 npm install
@@ -46,6 +46,21 @@ npm run build:dll
 
 # the dev-server will set proxy table to your backend
 set TARGET=http://Your-backend
+
+# serve with hot reload at localhost:8080
+npm run dev
+```
+### Windows-PowerShell
+
+```bash
+npm install
+# we use webpack DllReference to decrease the build time,
+# this command only needs execute once unless you upgrade the package in build/webpack.dll.conf.js
+$env:NODE_ENV="development"
+npm run build:dll
+
+# the dev-server will set proxy table to your backend
+$env:TARGET="http://Your-backend"
 
 # serve with hot reload at localhost:8080
 npm run dev
