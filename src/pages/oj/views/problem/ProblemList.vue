@@ -39,11 +39,13 @@
           </li>
         </ul>
       </div>
+      <!-- judy 加入Display ID排序 -->
       <Table style="width: 100%; font-size: 16px;"
              :columns="problemTableColumns"
              :data="problemList"
              :loading="loadings.table"
-             disabled-hover></Table>
+             disabled-hover
+             ></Table>
     </Panel>
     <Pagination
       :total="total" :page-size.sync="query.limit" @on-change="pushRouter" @on-page-size-change="pushRouter" :current.sync="query.page" :show-sizer="true"></Pagination>
@@ -93,6 +95,8 @@
             title: '#',
             key: '_id',
             width: 80,
+            sortable: true,
+            sortMethod: this.sortDisplayID,
             render: (h, params) => {
               return h('Button', {
                 props: {
@@ -267,6 +271,27 @@
           this.$success('Good Luck')
           this.$router.push({name: 'problem-details', params: {problemID: res.data.data}})
         })
+      },
+      // judy Display ID排序
+      sortDisplayID (a, b, sortType) {
+        if (a.includes('-') && b.includes('-')) {
+          const a1 = parseInt(a.split('-')[0])
+          const a2 = parseInt(a.split('-')[1])
+          const b1 = parseInt(b.split('-')[0])
+          const b2 = parseInt(b.split('-')[1])
+          if (sortType === 'asc') {
+            if (a1 === b1) {
+              return a2 - b2
+            }
+            return a1 - b1
+          } else {
+            if (a1 === b1) {
+              return b2 - a2
+            }
+            return b1 - a1
+          }
+        }
+        return 0
       }
     },
     computed: {
