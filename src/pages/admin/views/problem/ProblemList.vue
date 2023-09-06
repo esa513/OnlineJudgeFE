@@ -20,9 +20,14 @@
           prop="id"
           label="ID">
         </el-table-column>
+        <!-- judy display ID排序 -->
         <el-table-column
           width="150"
-          label="Display ID">
+          label="Display ID"
+          prop="originalData"
+          :sortable="true"
+          :sort-method="sortDisplayID"
+          >
           <template slot-scope="{row}">
             <span v-show="!row.isEditing">{{row._id}}</span>
             <el-input v-show="row.isEditing" v-model="row._id"
@@ -240,6 +245,22 @@
       },
       getPublicProblem () {
         api.getProblemList()
+      },
+      // judy Display ID排序
+      sortDisplayID (a, b) {
+        a = a._id
+        b = b._id
+        if (a.includes('-') && b.includes('-')) {
+          const a1 = parseInt(a.split('-')[0])
+          const a2 = parseInt(a.split('-')[1])
+          const b1 = parseInt(b.split('-')[0])
+          const b2 = parseInt(b.split('-')[1])
+          if (a1 === b1) {
+            return a2 - b2
+          }
+          return a1 - b1
+        }
+        return 0
       }
     },
     watch: {
