@@ -9,6 +9,7 @@
       <el-dropdown @command="handleCommand">
         <span>{{user.username}}<i class="el-icon-caret-bottom el-icon--right"></i></span>
         <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item command="homepage">Home Page</el-dropdown-item>
           <el-dropdown-item command="logout">Logout</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
@@ -67,6 +68,10 @@
           api.logout().then(() => {
             this.$router.push({name: 'login'})
           })
+        }
+        if (command === 'homepage') {
+          const url = window.location.href
+          window.location.href = url.split('/admin/')[0]
         }
       }
     },
