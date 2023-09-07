@@ -247,14 +247,17 @@
         this.$router.push(route)
       },
       adjustRejudgeColumn () {
-        if (!this.rejudgeColumnVisible || this.rejudge_column) {
+        // if (!this.rejudgeColumnVisible || this.rejudge_column) {
+        //   return
+        // }
+        if (this.rejudge_column) {
           return
         }
         const judgeColumn = {
           title: this.$i18n.t('m.Option'),
           fixed: 'right',
           align: 'center',
-          width: 90,
+          width: 100,
           render: (h, params) => {
             return h('Button', {
               props: {
@@ -283,6 +286,7 @@
         this.changeRoute()
       },
       handleRejudge (id, index) {
+        console.log('rrrrrrrrrrrr')
         this.submissions[index].loading = true
         api.submissionRejudge(id).then(res => {
           this.submissions[index].loading = false
