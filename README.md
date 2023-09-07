@@ -26,7 +26,7 @@ Install nodejs **v8.12.0** first.
 npm install
 # we use webpack DllReference to decrease the build time,
 # this command only needs execute once unless you upgrade the package in build/webpack.dll.conf.js
-export NODE_ENV=development 
+export NODE_ENV=development
 npm run build:dll
 
 # the dev-server will set proxy table to your backend
@@ -41,7 +41,7 @@ npm run dev
 npm install
 # we use webpack DllReference to decrease the build time,
 # this command only needs execute once unless you upgrade the package in build/webpack.dll.conf.js
-set NODE_ENV=development 
+set NODE_ENV=development
 npm run build:dll
 
 # the dev-server will set proxy table to your backend
@@ -77,3 +77,16 @@ Modern browsers and Internet Explorer 10+.
 ## LICENSE
 
 [MIT](http://opensource.org/licenses/MIT)
+
+
+---
+
+
+## 修改
+
+- [X] Display ID 排序&每頁顯示筆數(預設100筆)
+- [X] IO輸出輸入為(none)/(hidden)時，變換背景色
+- [X] 前端預設語言改為繁中
+- [ ] 導入題目，題目難度和可用語言會有問題
+- [ ] Simditor空格問題
+- [ ] ~~導出題目，依照Display ID排序(改不了，要到後端api改)~~

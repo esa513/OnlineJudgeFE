@@ -24,7 +24,10 @@
         <el-table-column
           label="DisplayID"
           width="200"
-          prop="_id">
+          prop="_id"
+          :sortable="true"
+          :sort-method="sortDisplayID"
+          >
         </el-table-column>
         <el-table-column
           label="Title"
@@ -104,7 +107,7 @@
         fileList1: [],
         fileList2: [],
         page: 1,
-        limit: 10,
+        limit: 100,
         total: 0,
         loadingProblems: false,
         loadingImporting: false,
@@ -160,6 +163,22 @@
       },
       uploadFailed () {
         this.$error('Upload failed')
+      },
+      // judy Display ID排序
+      sortDisplayID (a, b) {
+        a = a._id
+        b = b._id
+        if (a.includes('-') && b.includes('-')) {
+          const a1 = parseInt(a.split('-')[0])
+          const a2 = parseInt(a.split('-')[1])
+          const b1 = parseInt(b.split('-')[0])
+          const b2 = parseInt(b.split('-')[1])
+          if (a1 === b1) {
+            return a2 - b2
+          }
+          return a1 - b1
+        }
+        return 0
       }
     },
     watch: {
