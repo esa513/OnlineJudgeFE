@@ -1,7 +1,7 @@
 <template>
   <div class="setting-main">
-    <p class="section-title">{{$t('m.Sessions')}}</p>
-    <div class="flex-container setting-content">
+    <!-- <p class="section-title">{{$t('m.Sessions')}}</p> -->
+    <!-- <div class="flex-container setting-content">
       <template v-for="session in sessions">
         <Card :padding="20" class="flex-child">
           <span slot="title" style="line-height: 20px">{{session.ip}}</span>
@@ -26,7 +26,7 @@
           </Form>
         </Card>
       </template>
-    </div>
+    </div> -->
 
     <p class="section-title">{{$t('m.Two_Factor_Authentication')}}</p>
     <div class="mini-container setting-content">

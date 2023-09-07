@@ -91,3 +91,8 @@ Modern browsers and Internet Explorer 10+.
 - [ ] Simditor空格問題
 - [ ] ~~導出題目的壓縮檔，依照Display ID排序(改不了，要到後端api改)~~
   * `OnlineJudgeFE\src\pages\admin\api.js#L295`
+- [ ] ~~IP問題: 要辨識不易~~
+- [ ] 測試wifi dongle可不可以在USB禁用的時候使用
+- [ ] API取得所有submission
+- [ ] 隱藏上網IP顯示頁面
+- [X] 學生提交以後，更改題目測資，比賽功能無法rejudge，但一般題目可以
