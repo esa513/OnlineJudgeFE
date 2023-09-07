@@ -93,7 +93,9 @@ Modern browsers and Internet Explorer 10+.
   * `OnlineJudgeFE\src\pages\admin\api.js#L295`
 - [ ] ~~IP問題: 要辨識不易~~
 - [ ] 測試wifi dongle可不可以在USB禁用的時候使用
-- [ ] API取得所有submission
-- [ ] 隱藏上網IP顯示頁面
+- [ ] 比賽submission Rejudge
+- [ ] 分享提交問題:比賽沒有；一般題目會出現問題
+- [ ] 後台跳前台按鈕
+- [X] 隱藏上網IP顯示頁面
 - [X] 學生提交以後，更改題目測資，比賽功能無法rejudge，但一般題目可以
   * 從[這邊](https://github.com/QingdaoU/OnlineJudge/blob/master/submission/views/admin.py#L15)拿掉 `contest_id__isnull=True` 能解決api層面的問題
