@@ -96,4 +96,4 @@ Modern browsers and Internet Explorer 10+.
 - [ ] API取得所有submission
 - [ ] 隱藏上網IP顯示頁面
 - [X] 學生提交以後，更改題目測資，比賽功能無法rejudge，但一般題目可以
-  * 從[這邊](https://github.com/QingdaoU/OnlineJudge/blob/master/submission/views/admin.py#L15)拿掉 `contest_id__isnull=True` 應該能解決api層面的問題
+  * 從[這邊](https://github.com/QingdaoU/OnlineJudge/blob/master/submission/views/admin.py#L15)拿掉 `contest_id__isnull=True` 能解決api層面的問題
