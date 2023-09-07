@@ -283,7 +283,6 @@
         this.changeRoute()
       },
       handleRejudge (id, index) {
-        console.log('rrrrrrrrrrrr')
         this.submissions[index].loading = true
         api.submissionRejudge(id).then(res => {
           this.submissions[index].loading = false
