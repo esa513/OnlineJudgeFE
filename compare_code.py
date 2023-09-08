@@ -1,36 +1,54 @@
-import requests
-import json
+import tkinter as tk
+from tkinter import filedialog
+import os
+import re
+import shutil
 
 
-def get_submission_by_displayID(displayID, limit):
-    api_url = f"http://localhost:8081/api/submissions"
-    params = {}
-    params['limit'] = limit
-
-    submissionsIDList = []
-    try:
-        response = requests.get(api_url, params=params)
-        # 检查是否成功获取响应
-        if response.status_code == 200:
-            # 解析API响应的JSON数据
-            api_data = response.json()
-
-            # 在这里处理API数据，可以根据需要进行进一步的处理
-            api_data = api_data.get("data", {}).get("results", [])
-
-            for data in api_data:
-                if (data['problem'] == displayID):
-                    submissionsIDList.append(data['id'])
-            return submissionsIDList
-
-        else:
-            print(f"API请求失败，状态码: {response.status_code}")
-            # 进一步处理错误情况，例如记录错误信息或采取其他措施
-
-    except requests.exceptions.RequestException as e:
-        print(f"API请求发生异常: {e}")
-        # 处理请求异常，例如连接超时等情况
+def directory_selector_gui():
+    root = tk.Tk()
+    root.withdraw()
+    dir_path = filedialog.askdirectory(
+        initialdir='C:/Users/USER/Desktop/compare', title="選擇資料夾")
+    return dir_path
 
 
-submissionsIDList = get_submission_by_displayID("1-1", 10000)
-print()
+def compare_file(dir_path, origin_file, target_file, sameFile_dir):
+    abs_origin_file = os.path.join(dir_path, origin_file)
+    abs_target_file = os.path.join(dir_path, target_file)
+
+    # 打开第一个文件以读取字符串内容
+    with open(abs_origin_file, "r") as ofile:
+        of_txt = ofile.read()
+    with open(abs_target_file, "r") as tfile:
+        tf_txt = tfile.read()
+
+    # 忽略多個空白和換行符號
+    of_txt = re.sub(r"\s+", "", of_txt)
+    tf_txt = re.sub(r"\s+", "", tf_txt)
+
+    # 若有同樣的檔案，則複製到sameFile資料夾
+    if (of_txt == tf_txt):
+        shutil.copy(abs_origin_file, os.path.join(sameFile_dir,origin_file))
+        shutil.copy(abs_target_file, os.path.join(sameFile_dir,target_file))
+        return True
+    return False
+
+
+dir_path = directory_selector_gui()
+sameFile_dir = os.path.join(dir_path, "sameFile")
+
+# 讀檔案和創建sameFile資料夾
+if os.path.exists(sameFile_dir):
+    shutil.rmtree(sameFile_dir)
+
+files = os.listdir(dir_path)
+os.makedirs(sameFile_dir, exist_ok=True)
+
+for i, origin_file in enumerate(files):
+    print(f"\n[{i}] {origin_file}\n")
+    for j in range(i+1, len(files)):
+        target_file = files[j]
+        isSame = compare_file( dir_path, origin_file, target_file, sameFile_dir)
+        print(f"compare: {target_file}..... {isSame}")
+    print("="*50)
