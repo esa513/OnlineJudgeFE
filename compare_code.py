@@ -9,7 +9,7 @@ def directory_selector_gui():
     root = tk.Tk()
     root.withdraw()
     dir_path = filedialog.askdirectory(
-        initialdir='C:/Users/USER/Desktop/compare', title="選擇資料夾")
+        initialdir='/', title="選擇資料夾")
     return dir_path
 
 
