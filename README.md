@@ -94,7 +94,8 @@ Modern browsers and Internet Explorer 10+.
 - [ ] ~~IP問題: 要辨識不易~~
 - [ ] 測試wifi dongle可不可以在USB禁用的時候使用
 - [X] 比賽submission Rejudge
-- [ ] 分享提交問題:比賽沒有；一般題目會出現問題
+- [X] 分享提交問題:比賽沒有；一般題目會出現問題>拔除按鈕
+- [X] 學生查看提交預設為：我的>全部
 - [X] 後台跳前台按鈕
 - [X] 隱藏上網IP顯示頁面
 - [X] 學生提交以後，更改題目測資，比賽功能無法rejudge，但一般題目可以
