@@ -58,7 +58,7 @@
     data () {
       return {
         formFilter: {
-          myself: false,
+          myself: true,
           result: '',
           username: ''
         },
@@ -194,7 +194,7 @@
         this.contestID = this.$route.params.contestID
         let query = this.$route.query
         this.problemID = query.problemID
-        this.formFilter.myself = query.myself === '1'
+        // this.formFilter.myself = query.myself === '1'
         this.formFilter.result = query.result || ''
         this.formFilter.username = query.username || ''
         this.page = parseInt(query.page) || 1
