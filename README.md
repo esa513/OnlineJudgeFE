@@ -87,12 +87,6 @@ Modern browsers and Internet Explorer 10+.
 - [X] Display ID 排序&每頁顯示筆數(預設100筆)
 - [X] IO輸出輸入為(none)/(hidden)時，變換背景色
 - [X] 前端預設語言改為繁中
-- [ ] 導入題目，題目難度和可用語言會有問題
-- [ ] Simditor空格問題
-- [ ] ~~導出題目的壓縮檔，依照Display ID排序(改不了，要到後端api改)~~
-  * `OnlineJudgeFE\src\pages\admin\api.js#L295`
-- [ ] ~~IP問題: 要辨識不易~~
-- [ ] 測試wifi dongle可不可以在USB禁用的時候使用
 - [X] 比賽submission Rejudge
 - [X] 分享提交問題:比賽沒有；一般題目會出現問題>拔除按鈕
 - [X] 學生查看提交預設為：我的>全部
@@ -100,3 +94,14 @@ Modern browsers and Internet Explorer 10+.
 - [X] 隱藏上網IP顯示頁面
 - [X] 學生提交以後，更改題目測資，比賽功能無法rejudge，但一般題目可以
   * 從[這邊](https://github.com/QingdaoU/OnlineJudge/blob/master/submission/views/admin.py#L15)拿掉 `contest_id__isnull=True` 能解決api層面的問題
+- [X] FILE IO 鏡像源更換([參考](https://github.com/QingdaoU/OnlineJudge/issues/309))
+- [X] 比對程式碼>已寫python可以自動比對，並將相同程式碼複製到`Same`資料夾
+- [ ] 待討論(要不要開後端網址)：如果有開後端網址的話，前端可以看api service的東西(`\src\pages\admin\api.js`)
+- [ ] ~~IP問題: 要辨識不易~~
+
+### 小問題
+- [ ] 導入題目，題目難度和可用語言會有問題
+- [ ] Simditor空格問題
+- [ ] ~~導出題目的壓縮檔，依照Display ID排序(改不了，要到後端api改)~~
+  * `OnlineJudgeFE\src\pages\admin\api.js#L295`
+
