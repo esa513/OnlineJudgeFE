@@ -10,7 +10,8 @@
     "build": "node build/build.js",
     "build:dll": "webpack --config=build/webpack.dll.conf.js",
     "lint": "eslint --ext .js,.vue src",
-    "deploy": "scp -r ./dist/ oj:/tmp && ssh oj \"docker exec oj-backend rm -rf /app/dist ; docker cp /tmp/dist/. oj-backend:/app/dist/ ; docker restart oj-backend ; rm -rf /tmp/dist\""
+    "deploy": "scp -r ./dist/ oj:/tmp && ssh oj \"docker exec oj-backend rm -rf /app/dist ; docker cp /tmp/dist/. oj-backend:/app/dist/ ; docker restart oj-backend ; rm -rf /tmp/dist\"",
+    "deploy_test": "scp -r ./dist/ oj_test:/tmp && ssh oj_test \"docker exec oj-backend rm -rf /app/dist ; docker cp /tmp/dist/. oj-backend:/app/dist/ ; docker restart oj-backend ; rm -rf /tmp/dist\""
   },
   "dependencies": {
     "axios": "^0.18.0",
