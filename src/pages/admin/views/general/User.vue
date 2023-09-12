@@ -25,7 +25,7 @@
 
         <el-table-column prop="id" label="ID"></el-table-column>
 
-        <el-table-column prop="username" label="Username"></el-table-column>
+        <el-table-column prop="username" label="Username" sortable></el-table-column>
 
         <el-table-column prop="create_time" label="Create Time">
           <template slot-scope="scope">
@@ -260,7 +260,7 @@
     data () {
       return {
         // 一页显示的用户数
-        pageSize: 10,
+        pageSize: 100,
         // 用户总数
         total: 0,
         // 用户列表
