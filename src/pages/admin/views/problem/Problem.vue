@@ -379,7 +379,11 @@
         } else {
           this.title = this.$i18n.t('m.Create_Problem')
           for (let item of allLanguage.languages) {
-            this.problem.languages.push(item.name)
+            // judy: 預設程式語言為C
+            // this.problem.languages.push(item.name)
+            if (item.name === 'C') {
+              this.problem.languages.push(item.name)
+            }
           }
         }
       })
