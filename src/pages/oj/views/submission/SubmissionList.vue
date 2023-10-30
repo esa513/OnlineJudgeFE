@@ -194,7 +194,7 @@
         this.contestID = this.$route.params.contestID
         let query = this.$route.query
         this.problemID = query.problemID
-        // this.formFilter.myself = query.myself === '1'
+        this.formFilter.myself = !((this.isAdmin && typeof query.myself === 'undefined') || query.myself === '0')
         this.formFilter.result = query.result || ''
         this.formFilter.username = query.username || ''
         this.page = parseInt(query.page) || 1
@@ -307,9 +307,12 @@
       status () {
         return this.formFilter.result === '' ? this.$i18n.t('m.Status') : this.$i18n.t('m.' + JUDGE_STATUS[this.formFilter.result].name.replace(/ /g, '_'))
       },
-      rejudgeColumnVisible () {
+      isAdmin () {
         return this.user.admin_type === USER_TYPE.SUPER_ADMIN
-        // return !this.contestID && this.user.admin_type === USER_TYPE.SUPER_ADMIN
+      },
+      rejudgeColumnVisible () {
+        return this.isAdmin
+        // return !this.contestID && this.isAdmin
       }
     },
     watch: {
