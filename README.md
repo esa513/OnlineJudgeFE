@@ -76,7 +76,7 @@ Modern browsers and Internet Explorer 10+.
 
 ## LICENSE
 
-[MIT](http://opensource.org/licenses/MIT)
+[MIT](https://opensource.org/licenses/MIT)
 
 
 ---
