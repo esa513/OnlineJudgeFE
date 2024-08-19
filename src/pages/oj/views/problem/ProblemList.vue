@@ -104,8 +104,12 @@
                   size: 'large'
                 },
                 on: {
-                  click: () => {
-                    this.$router.push({name: 'problem-details', params: {problemID: params.row._id}})
+                  click: (event) => {
+                    if (event.ctrlKey || event.metaKey) { // Ctrl 或 Cmd 被按下
+                      window.open(this.$router.resolve({name: 'problem-details', params: {problemID: params.row._id}}).href, '_blank')
+                    } else { // 左鍵點擊
+                      this.$router.push({name: 'problem-details', params: {problemID: params.row._id}})
+                    }
                   }
                 },
                 style: {
@@ -124,8 +128,12 @@
                   size: 'large'
                 },
                 on: {
-                  click: () => {
-                    this.$router.push({name: 'problem-details', params: {problemID: params.row._id}})
+                  click: (event) => {
+                    if (event.ctrlKey || event.metaKey) { // Ctrl 或 Cmd 被按下
+                      window.open(this.$router.resolve({name: 'problem-details', params: {problemID: params.row._id}}).href, '_blank')
+                    } else { // 左鍵點擊
+                      this.$router.push({name: 'problem-details', params: {problemID: params.row._id}})
+                    }
                   }
                 },
                 style: {
