@@ -27,12 +27,12 @@
                 </p>
                 <!-- judy: IO加入none/hidden背景變色 -->
                 <pre v-if="sample.input == '(none)' || sample.input == '(hidden)'" style="background-color: lightgray;">{{sample.input}}</pre>
-                <pre v-if="sample.input != '(none)' && sample.input != '(hidden)'">{{sample.input.replaceAll('\n', '\\n\n')}}</pre>
+                <pre v-if="sample.input != '(none)' && sample.input != '(hidden)'">{{sample.input}}</pre>
               </div>
               <div class="sample-output">
                 <p class="title">{{$t('m.Sample_Output')}} {{index + 1}}</p>
                 <pre v-if="sample.output == '(none)' || sample.output == '(hidden)'" style="background-color: lightgray;">{{sample.output}}</pre>
-                <pre v-if="sample.output != '(none)' && sample.output != '(hidden)'">{{sample.output.replaceAll('\n', '\\n\n')}}</pre>
+                <pre v-if="sample.output != '(none)' && sample.output != '(hidden)'">{{sample.output}}</pre>
               </div>
             </div>
           </div>
