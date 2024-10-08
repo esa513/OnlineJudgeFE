@@ -31,7 +31,7 @@
             </Dropdown>
           </li>
           <li>
-            <Input id="keyword" @on-enter="changeRoute" @on-click="changeRoute" v-model="query.keyword"
+            <Input id="keyword" @on-enter="onKeywordChange" @on-click="onKeywordChange" v-model="query.keyword"
                    icon="ios-search-strong" placeholder="Keyword"/>
           </li>
         </ul>
@@ -155,6 +155,10 @@
       },
       onStatusChange (status) {
         this.query.status = status
+        this.page = 1
+        this.changeRoute()
+      },
+      onKeywordChange () {
         this.page = 1
         this.changeRoute()
       },
