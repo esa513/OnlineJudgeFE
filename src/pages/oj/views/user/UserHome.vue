@@ -41,7 +41,7 @@
           <p v-else>{{$t('m.UserHomeIntro')}}</p>
           <div class="btns">
             <div class="problem-btn" v-for="problemID of problems" :key="problemID">
-              <Button type="ghost" @click="goProblem(problemID)">{{problemID}}</Button>
+              <Button type="ghost" @click="goProblem(problemID, $event)">{{problemID}}</Button>
             </div>
           </div>
         </div>
@@ -64,6 +64,7 @@
   import { mapActions } from 'vuex'
   import time from '@/utils/time'
   import api from '@oj/api'
+  import utils from '@/utils/utils'
 
   export default {
     data () {
@@ -103,8 +104,8 @@
         ACProblems.sort()
         this.problems = ACProblems
       },
-      goProblem (problemID) {
-        this.$router.push({name: 'problem-details', params: {problemID: problemID}})
+      goProblem (problemID, event) {
+        utils.handleClick.call(this, event, {name: 'problem-details', params: {problemID: problemID}})
       },
       freshProblemDisplayID () {
         api.freshDisplayID().then(res => {

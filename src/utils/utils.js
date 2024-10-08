@@ -94,6 +94,14 @@ function getLanguages () {
   })
 }
 
+function handleClick(event, params) {
+  if (event.ctrlKey || event.metaKey) { // Ctrl 或 Cmd 被按下
+    window.open(this.$router.resolve(params).href, '_blank')
+  } else { // 左鍵點擊
+    this.$router.push(params)
+  }
+}
+
 export default {
   submissionMemoryFormat: submissionMemoryFormat,
   submissionTimeFormat: submissionTimeFormat,
@@ -101,5 +109,6 @@ export default {
   filterEmptyValue: filterEmptyValue,
   breakLongWords: breakLongWords,
   downloadFile: downloadFile,
-  getLanguages: getLanguages
+  getLanguages: getLanguages,
+  handleClick: handleClick,
 }

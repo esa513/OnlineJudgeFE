@@ -81,8 +81,8 @@
                     cursor: 'pointer'
                   },
                   on: {
-                    click: () => {
-                      this.$router.push('/status/' + params.row.id)
+                    click: (event) => {
+                      utils.handleClick.call(this, event, '/status/' + params.row.id)
                     }
                   }
                 }, params.row.id.slice(0, 12))
@@ -113,15 +113,17 @@
                     cursor: 'pointer'
                   },
                   on: {
-                    click: () => {
+                    click: (event) => {
                       if (this.contestID) {
-                        this.$router.push(
-                          {
-                            name: 'contest-problem-details',
-                            params: {problemID: params.row.problem, contestID: this.contestID}
-                          })
+                        utils.handleClick.call(this, event, {
+                          name: 'contest-problem-details',
+                          params: {problemID: params.row.problem, contestID: this.contestID}
+                        })
                       } else {
-                        this.$router.push({name: 'problem-details', params: {problemID: params.row.problem}})
+                        utils.handleClick.call(this, event, {
+                          name: 'problem-details',
+                          params: {problemID: params.row.problem}
+                        })
                       }
                     }
                   }
@@ -158,12 +160,11 @@
                   'max-width': '150px'
                 },
                 on: {
-                  click: () => {
-                    this.$router.push(
-                      {
-                        name: 'user-home',
-                        query: {username: params.row.username}
-                      })
+                  click: (event) => {
+                    utils.handleClick.call(this, event, {
+                      name: 'user-home',
+                      query: {username: params.row.username}
+                    })
                   }
                 }
               }, params.row.username)

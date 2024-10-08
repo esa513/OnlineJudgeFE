@@ -3,7 +3,7 @@
     <Col :span="22">
     <panel shadow v-if="contests.length" class="contest">
       <div slot="title">
-        <Button type="text"  class="contest-title" @click="goContest">{{contests[index].title}}</Button>
+        <Button type="text"  class="contest-title" @click="goContest($event)">{{contests[index].title}}</Button>
       </div>
       <Carousel v-model="index" trigger="hover" autoplay :autoplay-speed="6000" class="contest">
         <CarouselItem v-for="(contest, index) of contests" :key="index">
@@ -36,6 +36,7 @@
   import api from '@oj/api'
   import time from '@/utils/time'
   import { CONTEST_STATUS } from '@/utils/constants'
+  import utils from '@/utils/utils'
 
   export default {
     name: 'home',
@@ -58,10 +59,11 @@
       getDuration (startTime, endTime) {
         return time.duration(startTime, endTime)
       },
-      goContest () {
-        this.$router.push({
+      goContest (event) {
+        const { index, contests } = this
+        utils.handleClick.call(this, event, {
           name: 'contest-details',
-          params: {contestID: this.contests[this.index].id}
+          params: {contestID: contests[index].id}
         })
       }
     }

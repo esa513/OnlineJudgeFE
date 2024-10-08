@@ -43,7 +43,7 @@
             <img class="trophy" src="../../../../assets/Cup.png"/>
             <Col :span="18" class="contest-main">
             <p class="title">
-              <a class="entry" @click.stop="goContest(contest)">
+              <a class="entry" @click.stop="goContest(contest, $event)">
                 {{contest.title}}
               </a>
               <template v-if="contest.contest_type != 'Public'">
@@ -158,13 +158,13 @@
         this.page = 1
         this.changeRoute()
       },
-      goContest (contest) {
+      goContest (contest, event) {
         this.cur_contest_id = contest.id
         if (contest.contest_type !== CONTEST_TYPE.PUBLIC && !this.isAuthenticated) {
           this.$error(this.$i18n.t('m.Please_login_first'))
           this.$store.dispatch('changeModalStatus', {visible: true})
         } else {
-          this.$router.push({name: 'contest-details', params: {contestID: contest.id}})
+          utils.handleClick.call(this, event, {name: 'contest-details', params: {contestID: contest.id}})
         }
       },
 

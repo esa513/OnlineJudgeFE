@@ -51,12 +51,11 @@
                   'max-width': '200px'
                 },
                 on: {
-                  click: () => {
-                    this.$router.push(
-                      {
-                        name: 'user-home',
-                        query: {username: params.row.user.username}
-                      })
+                  click: (event) => {
+                    utils.handleClick.call(this, event, {
+                      name: 'user-home',
+                      query: {username: params.row.user.username}
+                    })
                   }
                 }
               }, params.row.user.username)

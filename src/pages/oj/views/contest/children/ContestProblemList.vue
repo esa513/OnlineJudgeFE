@@ -5,12 +5,10 @@
       <Table v-if="contestRuleType == 'ACM' || OIContestRealTimePermission"
              :columns="ACMTableColumns"
              :data="problems"
-             @on-row-click="goContestProblem"
              :no-data-text="$t('m.No_Problems')"></Table>
       <Table v-else
              :data="problems"
              :columns="OITableColumns"
-             @on-row-click="goContestProblem"
              no-data-text="$t('m.No_Problems')"></Table>
     </Panel>
   </div>
@@ -19,6 +17,7 @@
 <script>
   import {mapState, mapGetters} from 'vuex'
   import {ProblemMixin} from '@oj/components/mixins'
+  import utils from '../../../../../utils/utils';
 
   export default {
     name: 'ContestProblemList',
@@ -28,23 +27,21 @@
         ACMTableColumns: [
           {
             title: '#',
-            key: '_id',
-            sortType: 'asc',
-            width: 150
+            sortType: 'ASC',
+            width: 150,
+            render: (h, params) => this.renderCellByKey(h, params, '_id')
           },
           {
             title: this.$i18n.t('m.Title'),
-            key: 'title'
+            render: (h, params) => this.renderCellByKey(h, params, 'title')
           },
           {
             title: this.$i18n.t('m.Total'),
-            key: 'submission_number'
+            render: (h, params) => this.renderCellByKey(h, params, 'submission_number')
           },
           {
             title: this.$i18n.t('m.AC_Rate'),
-            render: (h, params) => {
-              return h('span', this.getACRate(params.row.accepted_number, params.row.submission_number))
-            }
+            render: (h, params) => this.renderCellByValue(h, params, this.getACRate(params.row.accepted_number, params.row.submission_number))
           }
         ],
         OITableColumns: [
@@ -75,14 +72,31 @@
           }
         })
       },
-      goContestProblem (row) {
-        this.$router.push({
-          name: 'contest-problem-details',
-          params: {
-            contestID: this.$route.params.contestID,
-            problemID: row._id
+      renderCell (h, params, keyVaule=null, type='key') {
+        if (type !== 'key' && type !== 'value') {
+          console.error('type must be key or value')
+          return
+        }
+        const value = type === 'key' ? params.row[keyVaule] : keyVaule
+        return h('div', {
+          on: {
+            click: (event) => {
+              utils.handleClick.call(this, event, {
+                name: 'contest-problem-details',
+                params: {
+                  contestID: this.$route.params.contestID,
+                  problemID: params.row._id
+                }
+              })
+            }
           }
-        })
+        }, value)
+      },
+      renderCellByKey(h, params, key) {
+        return this.renderCell(h, params, key, 'key')
+      },
+      renderCellByValue(h, params, value) {
+        return this.renderCell(h, params, value, 'value')
       }
     },
     computed: {

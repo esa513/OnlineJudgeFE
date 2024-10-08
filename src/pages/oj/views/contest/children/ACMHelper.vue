@@ -27,6 +27,7 @@
   import moment from 'moment'
   import Pagination from '@oj/components/Pagination.vue'
   import api from '@oj/api'
+  import utils from '@/utils/utils'
 
   export default {
     name: 'acm-helper',
@@ -73,8 +74,8 @@
                   'max-width': '150px'
                 },
                 on: {
-                  click: () => {
-                    this.$router.push({
+                  click: (event) => {
+                    utils.handleClick.call(this, event, {
                       name: 'contest-submission-list',
                       query: {username: row.username}
                     })

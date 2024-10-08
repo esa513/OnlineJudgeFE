@@ -26,7 +26,7 @@
         {{$t('m.UserLogin')}}
       </Button>
       <a v-if="website.allow_register" @click.stop="handleBtnClick('register')">{{$t('m.No_Account')}}</a>
-      <a @click.stop="goResetPassword" style="float: right">{{$t('m.Forget_Password')}}</a>
+      <a @click.stop="goResetPassword($event)" style="float: right">{{$t('m.Forget_Password')}}</a>
     </div>
   </div>
 </template>
@@ -35,6 +35,7 @@
   import { mapGetters, mapActions } from 'vuex'
   import api from '@oj/api'
   import { FormMixin } from '@oj/components/mixins'
+  import utils from '@/utils/utils'
 
   export default {
     mixins: [FormMixin],
@@ -92,9 +93,9 @@
           })
         })
       },
-      goResetPassword () {
+      goResetPassword (event) {
         this.changeModalStatus({visible: false})
-        this.$router.push({name: 'apply-reset-password'})
+        utils.handleClick.call(this, event, {name: 'apply-reset-password'})
       }
     },
     computed: {

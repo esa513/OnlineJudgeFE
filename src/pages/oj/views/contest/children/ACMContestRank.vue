@@ -85,12 +85,11 @@
                   'max-width': '150px'
                 },
                 on: {
-                  click: () => {
-                    this.$router.push(
-                      {
-                        name: 'user-home',
-                        query: {username: params.row.user.username}
-                      })
+                  click: (event) => {
+                    utils.handleClick.call(this, event, {
+                      name: 'user-home',
+                      query: {username: params.row.user.username}
+                    })
                   }
                 }
               }, params.row.user.username)
@@ -105,8 +104,8 @@
                 h('span', {}, params.row.accepted_number + ' / '),
                 h('a', {
                   on: {
-                    click: () => {
-                      this.$router.push({
+                    click: (event) => {
+                      utils.handleClick.call(this, event, {
                         name: 'contest-submission-list',
                         query: {username: params.row.user.username}
                       })
@@ -279,8 +278,8 @@
                   'emphasis': true
                 },
                 on: {
-                  click: () => {
-                    this.$router.push({
+                  click: (event) => {
+                    utils.handleClick.call(this, event, {
                       name: 'contest-problem-details',
                       params: {
                         contestID: this.contestID,

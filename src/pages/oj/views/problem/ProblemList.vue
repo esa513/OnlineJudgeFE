@@ -105,11 +105,7 @@
                 },
                 on: {
                   click: (event) => {
-                    if (event.ctrlKey || event.metaKey) { // Ctrl 或 Cmd 被按下
-                      window.open(this.$router.resolve({name: 'problem-details', params: {problemID: params.row._id}}).href, '_blank')
-                    } else { // 左鍵點擊
-                      this.$router.push({name: 'problem-details', params: {problemID: params.row._id}})
-                    }
+                    utils.handleClick.call(this, event, {name: 'problem-details', params: {problemID: params.row._id}})
                   }
                 },
                 style: {
@@ -129,11 +125,7 @@
                 },
                 on: {
                   click: (event) => {
-                    if (event.ctrlKey || event.metaKey) { // Ctrl 或 Cmd 被按下
-                      window.open(this.$router.resolve({name: 'problem-details', params: {problemID: params.row._id}}).href, '_blank')
-                    } else { // 左鍵點擊
-                      this.$router.push({name: 'problem-details', params: {problemID: params.row._id}})
-                    }
+                    utils.handleClick.call(this, event, {name: 'problem-details', params: {problemID: params.row._id}})
                   }
                 },
                 style: {
