@@ -272,13 +272,23 @@
           this.$router.push({name: 'problem-details', params: {problemID: res.data.data}})
         })
       },
-      // judy Display ID排序
       sortDisplayID (a, b, sortType) {
-        if (a.includes('-') && b.includes('-')) {
-          const a1 = parseInt(a.split('-')[0])
-          const a2 = parseInt(a.split('-')[1])
-          const b1 = parseInt(b.split('-')[0])
-          const b2 = parseInt(b.split('-')[1])
+        const regex = /(\d+)-(\d+)/
+        const matchA = a.match(regex)
+        const matchB = b.match(regex)
+
+        const containsHW = (str) => str.includes('HW')
+
+        if (containsHW(a) !== containsHW(b)) {
+          return containsHW(a) ? (sortType === 'asc' ? 1 : -1) : (sortType === 'asc' ? -1 : 1)
+        }
+
+        if (matchA && matchB) {
+          const a1 = parseInt(matchA[1])
+          const a2 = parseInt(matchA[2])
+          const b1 = parseInt(matchB[1])
+          const b2 = parseInt(matchB[2])
+
           if (sortType === 'asc') {
             if (a1 === b1) {
               return a2 - b2
