@@ -7,6 +7,7 @@ export const m = {
   Output: '輸出',
   Sample_Input: '輸入範例',
   Sample_Output: '輸出範例',
+  Visualize_Characters: '可視化字元 (\' \'->\'␣\')、(\'\\n\'->\'\\n\')、(\'\\t\'->\'⇥\')（暫時僅確保期中考完全正確）',
   Hint: '提示',
   Source: '題目來源',
   Status: '狀態',

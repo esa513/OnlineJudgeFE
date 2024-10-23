@@ -7,6 +7,7 @@ export const m = {
   Output: 'Output',
   Sample_Input: 'Sample Input',
   Sample_Output: 'Sample Output',
+  Visualize_Characters: 'Visualize characters (\' \'->\'␣\'), (\'\\n\'->\'\\n\'), (\'\\t\'->\'⇥\') (temporarily only ensured to be correct for midterm exam)',
   Hint: 'Hint',
   Source: 'Source',
   Status: 'Status',
