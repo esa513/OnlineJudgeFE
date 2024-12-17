@@ -14,6 +14,13 @@
           <p class="title">{{$t('m.Output')}} <span v-if="problem.io_mode.io_mode=='File IO'">({{$t('m.ToFile')}}: {{ problem.io_mode.output }})</span></p>
           <p class="content" v-html=problem.output_description></p>
 
+          <div v-if="problem.hint">
+            <p class="title">{{$t('m.Hint')}}</p>
+            <Card dis-hover>
+              <div class="content" v-html=problem.hint></div>
+            </Card>
+          </div>
+
           <div v-for="(sample, index) of problem.samples" :key="index">
             <div class="flex-container sample">
               <div class="sample-input">
@@ -30,7 +37,7 @@
                 <pre v-if="sample.input != '(none)' && sample.input != '(hidden)'">{{sample.input}}</pre>
                 <br>
                 <p>{{$t('m.Visualize_Characters')}}</p>
-                <pre>{{sample.input.replaceAll(' ', '␣').replaceAll('\n', '\\n\n').replaceAll('\t', '⇥').replaceAll(' ', '␣')}}</pre>
+                <pre style="background-color: lightgray;">{{sample.input.replaceAll(' ', '␣').replaceAll('\n', '\\n\n').replaceAll('\t', '⇥').replaceAll(' ', '␣')}}</pre>
               </div>
               <div class="sample-output">
                 <p class="title">{{$t('m.Sample_Output')}} {{index + 1}}</p>
@@ -38,16 +45,9 @@
                 <pre v-if="sample.output != '(none)' && sample.output != '(hidden)'">{{sample.output}}</pre>
                 <br>
                 <p>{{$t('m.Visualize_Characters')}}</p>
-                <pre>{{sample.output.replaceAll(' ', '␣').replaceAll('\n', '\\n\n').replaceAll('\t', '⇥').replaceAll(' ', '␣')}}</pre>
+                <pre style="background-color: lightgray;">{{sample.output.replaceAll(' ', '␣').replaceAll('\n', '\\n\n').replaceAll('\t', '⇥').replaceAll(' ', '␣')}}</pre>
               </div>
             </div>
-          </div>
-
-          <div v-if="problem.hint">
-            <p class="title">{{$t('m.Hint')}}</p>
-            <Card dis-hover>
-              <div class="content" v-html=problem.hint></div>
-            </Card>
           </div>
 
           <div v-if="problem.source">

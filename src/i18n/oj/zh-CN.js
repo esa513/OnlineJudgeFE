@@ -7,7 +7,7 @@ export const m = {
   Output: '输出',
   Sample_Input: '输入样例',
   Sample_Output: '输出样例',
-  Visualize_Characters: '可视化字符 (\' \'->\'␣\')、(\'\\n\'->\'\\n\')、(\'\\t\'->\'⇥\')（暂时确保期中考完全正确）',
+  Visualize_Characters: '可视化字符 (\' \'->\'␣\')、(\'\\n\'->\'\\n\')、(\'\\t\'->\'⇥\')（供对照格式使用，暂时仅确保期中考、期末考完全正确）',
   Hint: '提示',
   Source: '题目来源',
   Status: '状态',
