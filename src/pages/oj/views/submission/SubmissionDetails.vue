@@ -2,7 +2,11 @@
   <Row type="flex" justify="space-around">
     <Col :span="20" id="status">
       <Alert :type="status.type" showIcon>
-        <span class="title">{{$t('m.' + status.statusName.replace(/ /g, "_"))}}</span>
+        <span class="title">{{ $t('m.' + status.statusName.replace(/ /g, "_")) }}
+          <a class="copy" v-clipboard:copy="submission.code" v-clipboard:success="onCopy" v-clipboard:error="onCopyError">
+            <Icon type="clipboard"></Icon>
+          </a>
+        </span>
         <div slot="desc" class="content">
           <template v-if="isCE">
             <pre>{{submission.statistic_info.err_info}}</pre>
