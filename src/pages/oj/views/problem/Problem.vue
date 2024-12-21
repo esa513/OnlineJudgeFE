@@ -24,7 +24,7 @@
           <div v-for="(sample, index) of problem.samples" :key="index">
             <div class="flex-container sample">
               <div class="sample-input">
-                <p class="title">{{$t('m.Sample_Input')}} {{index + 1}}
+                <p class="title">{{$t('m.Sample_Input')}} {{index + 1}}<span v-if="problem.io_mode.io_mode=='Standard IO'"> (stdin)</span>
                   <a class="copy"
                      v-clipboard:copy="sample.input"
                      v-clipboard:success="onCopy"
@@ -40,7 +40,7 @@
                 <pre style="background-color: lightgray;">{{sample.input.replaceAll(' ', '␣').replaceAll('\n', '\\n\n').replaceAll('\t', '⇥').replaceAll(' ', '␣')}}</pre>
               </div>
               <div class="sample-output">
-                <p class="title">{{$t('m.Sample_Output')}} {{index + 1}}</p>
+                <p class="title">{{$t('m.Sample_Output')}} {{index + 1}}<span v-if="problem.io_mode.io_mode=='Standard IO'"> (stdout)</span></p>
                 <pre v-if="sample.output == '(none)' || sample.output == '(hidden)'" style="background-color: lightgray;">{{sample.output}}</pre>
                 <pre v-if="sample.output != '(none)' && sample.output != '(hidden)'">{{sample.output}}</pre>
                 <br>
